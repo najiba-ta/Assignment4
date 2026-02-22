@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Application Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+</head>
+<body class="bg-gray-100">
+<header class="w-[80%] mx-auto mt-8">
+    <h1 class="text-5xl font-bold mb-6">Job Application Tracker</h1>
+    <div class="grid grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded shadow text-center">
+            <p class="font-semibold">Total</p>
+            <p id="total" class="text-2xl font-bold">0</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-center">
+            <p class="font-semibold">Interview</p>
+            <p id="intr-count" class="text-2xl font-bold text-green-700">0</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow text-center">
+            <p class="font-semibold">Rejected</p>
+            <p id="rjc-count" class="text-2xl font-bold text-red-700">0</p>
+        </div>
+    </div>
+</header>
+
+<hr class="my-8 border-gray-300 w-[80%] mx-auto">
+<main class="w-[80%] mx-auto">
+    <div class="flex justify-between mb-4">
+        <h2 class="font-semibold text-xl">Available Jobs</h2>
+        <p id="job-number">8 jobs</p>
+    </div>
+
+    <div class="mb-6">
+        <button id="all-btn" class="bg-blue-900 text-white py-2 px-6 rounded-md mx-1">All</button>
+        <button id="intr-btn" class="bg-gray-300 py-2 px-6 rounded-md mx-1">Interview</button>
+        <button id="rjc-btn" class="bg-gray-300 py-2 px-6 rounded-md mx-1">Rejected</button>
+    </div>
+
+    <section id="filtered-section" class="hidden"></section>
+    <section id="job-card" class="flex flex-col">
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">Mobile First Corp</h2>
+                <p class="reactDev text-gray-600 mb-2">React Native Developer</p>
+                <p class="remote text-gray-600 text-sm mb-2">Remote · Full-Time · $13k-$20k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Build cross-platform mobile apps.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">Tech Innovators</h2>
+                <p class="reactDev text-gray-600 mb-2">Frontend Developer</p>
+                <p class="remote text-gray-600 text-sm mb-2">Onsite · Full-Time · $15k-$25k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Work on responsive UI/UX designs.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">CodeMasters</h2>
+                <p class="reactDev text-gray-600 mb-2">Backend Developer</p>
+                <p class="remote text-gray-600 text-sm mb-2">Remote · Part-Time · $10k-$18k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Develop backend APIs and database systems.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">AppWorks</h2>
+                <p class="reactDev text-gray-600 mb-2">Full Stack Developer</p>
+                <p class="remote text-gray-600 text-sm mb-2">Remote · Full-Time · $20k-$30k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Work on web and mobile projects.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">DesignHub</h2>
+                <p class="reactDev text-gray-600 mb-2">UI/UX Designer</p>
+                <p class="remote text-gray-600 text-sm mb-2">Onsite · Full-Time · $12k-$18k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Create user-friendly interface designs.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">DataSolutions</h2>
+                <p class="reactDev text-gray-600 mb-2">Data Analyst</p>
+                <p class="remote text-gray-600 text-sm mb-2">Remote · Contract · $11k-$16k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Analyze datasets and reports.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">CloudTech</h2>
+                <p class="reactDev text-gray-600 mb-2">DevOps Engineer</p>
+                <p class="remote text-gray-600 text-sm mb-2">Remote · Full-Time · $18k-$28k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Optimize cloud infrastructure.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+        <div class="card bg-white p-5 rounded shadow my-4 flex justify-between">
+            <div>
+                <h2 class="mblCorp font-bold text-lg">Future Tech Soloution</h2>
+                <p class="reactDev text-gray-600 mb-2">Frontend Developer</p>
+                <p class="remote text-gray-600 text-sm mb-2">Remote · Full-Time · $14k-$22k</p>
+                <p class="status font-semibold mb-2">Not Applied</p>
+                <p class="notes text-gray-800 text-sm mb-2">Develop responsive web applications using React.</p>
+                <div class="flex gap-3">
+                    <button class="in-btn border border-green-700 text-green-700 font-bold py-1 px-3 rounded">INTERVIEW</button>
+                    <button class="rj-btn border border-red-700 text-red-700 font-bold py-1 px-3 rounded">REJECTED</button>
+                </div>
+            </div>
+            <button class="delete-btn text-red-500"><i class="fa-regular fa-trash-can text-lg"></i></button>
+        </div>
+
+    </section>
+</main>
+<script src="./script.js"></script>
+
+</body>
+</html>
